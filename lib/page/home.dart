@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             text: _list[index]));
   }
 
-  ///insert function
+  ///insert item function
   void _onAddItem() {
     final newIndex = _list.length;
     const newItem = 'hello';
@@ -76,14 +76,16 @@ class BuildCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScaleTransition(
-      scale: animation,
+    return SlideTransition(
+      position: animation
+          .drive(Tween(begin: const Offset(-1, 0), end: const Offset(0, 0))),
       child: Card(
           child: ListTile(
         key: ValueKey<String>(index.toString()),
-        onTap: onDelete,
+        tileColor: Colors.green,
         title: Text(text!),
-        trailing: const Icon(Icons.remove_circle_outline),
+        trailing: IconButton(
+            onPressed: onDelete, icon: const Icon(Icons.remove_circle_outline)),
       )),
     );
   }
