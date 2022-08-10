@@ -1,4 +1,5 @@
 import 'package:animated_lt/page/home.dart';
+import 'package:animated_lt/page/sliver/sliver_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      routes: {
+        SliverPage.route: (context) => const SliverPage(),
+        HomePage.route: (context) => const HomePage(),
+      },
+      initialRoute: SliverPage.route,
     );
   }
 }
